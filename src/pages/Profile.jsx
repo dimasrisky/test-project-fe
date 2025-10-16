@@ -161,7 +161,10 @@ export default function Profile() {
   const handleLogout = async () => {
     try {
       const response = await fetch('http://localhost:3000/auth/logout', {
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+        },
         method: 'POST',
         body: JSON.stringify({ sessionId: localStorage.getItem('sessionId'), refreshToken: localStorage.getItem('refreshToken') })
       })
