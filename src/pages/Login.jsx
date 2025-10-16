@@ -20,6 +20,8 @@ export default function Login() {
       if(response.ok){
         // Simpan token sementara
         localStorage.setItem('accessToken', result.accessToken)
+        localStorage.setItem('refreshToken', result.refreshToken)
+        localStorage.setItem('sessionId', result.sessionId)
 
         // Cek apakah user memiliki 2FA
         if (result.tfaRequired) {

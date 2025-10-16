@@ -158,9 +158,26 @@ export default function Profile() {
 
   console.log(otpAuthUrl);
 
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken')
-    navigate('/login')
+  const handleLogout = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/auth/logout', {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: JSON.stringify({ sessionId: localStorage.getItem('sessionId'), refreshToken: localStorage.getItem('refreshToken') })
+      })
+      if(!response.ok) {
+        alert('Logout failed!')
+        return
+      }
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('refreshToken')
+      localStorage.removeItem('sessionId')
+      navigate('/login')
+    }catch(error){
+      alert('Logout failed!')
+      console.log(error);
+      return
+    }
   }
 
   if (loading) {
