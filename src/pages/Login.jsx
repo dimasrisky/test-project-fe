@@ -10,12 +10,14 @@ export default function Login() {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/auth/login`, {
+      const response = await fetch(`${import.meta.env.VITE_PREFIX_BACKEND_URL}/auth/login`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ email, password })
       })
       const result = await response.json()
+
+      console.log(import.meta.env.VITE_PREFIX_BACKEND_URL);
 
       if(response.ok){
         // Simpan token sementara

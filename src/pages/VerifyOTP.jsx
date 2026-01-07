@@ -41,7 +41,7 @@ export default function VerifyOTP() {
     try {
       const email = localStorage.getItem('loginEmail')
 
-      let endpoint = `${process.env.PREFIX_BACKEND_URL}/user/verify-tfa`
+      let endpoint = `${import.meta.env.VITE_PREFIX_BACKEND_URL}/user/verify-tfa`
 
       const response = await fetch(endpoint, {
         headers: {

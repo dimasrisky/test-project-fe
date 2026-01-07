@@ -20,11 +20,12 @@ export default function Register() {
 
   const register = async (name, email, password, address) => {
     try {
-      const response = await fetch (`${process.env.PREFIX_BACKEND_URL}/auth/register`, {
+      const response = await fetch (`${import.meta.env.VITE_PREFIX_BACKEND_URL}/auth/register`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ name, email, password, address })
       })
+      console.log(response);
       await response.json()
       if(response.ok){
         navigate('/login')

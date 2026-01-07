@@ -10,7 +10,7 @@ export default function UserList() {
 
     const fetchUsers = async () => {
       try {
-        const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/user`, {
+        const response = await fetch(`${import.meta.env.VITE_PREFIX_BACKEND_URL}/user`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
