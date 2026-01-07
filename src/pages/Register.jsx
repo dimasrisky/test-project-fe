@@ -20,7 +20,7 @@ export default function Register() {
 
   const register = async (name, email, password, address) => {
     try {
-      const response = await fetch ('http://localhost:3000/auth/register', {
+      const response = await fetch (`${process.env.PREFIX_BACKEND_URL}/auth/register`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ name, email, password, address })

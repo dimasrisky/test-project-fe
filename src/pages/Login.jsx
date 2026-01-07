@@ -10,7 +10,7 @@ export default function Login() {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3000/auth/login', {
+      const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/auth/login`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ email, password })

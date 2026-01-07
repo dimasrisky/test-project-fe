@@ -28,7 +28,7 @@ export default function Profile() {
         return
       }
 
-      const response = await fetch('http://localhost:3000/auth/me', {
+      const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/auth/me`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -68,7 +68,7 @@ export default function Profile() {
     e.preventDefault()
     try {
       const token = localStorage.getItem('accessToken')
-      const response = await fetch('http://localhost:3000/user/profile', {
+      const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/user/profile`, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
@@ -107,7 +107,7 @@ export default function Profile() {
       setTwoFALoading(true)
       try {
         const token = localStorage.getItem('accessToken')
-        const response = await fetch('http://localhost:3000/user/enable-tfa', {
+        const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/user/enable-tfa`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -132,7 +132,7 @@ export default function Profile() {
       setTwoFALoading(true)
       try {
         const token = localStorage.getItem('accessToken')
-        const response = await fetch('http://localhost:3000/user/disable-tfa', {
+        const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/user/disable-tfa`, {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
@@ -160,7 +160,7 @@ export default function Profile() {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://localhost:3000/auth/logout', {
+      const response = await fetch(`${process.env.PREFIX_BACKEND_URL}/auth/logout`, {
         headers: { 
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
